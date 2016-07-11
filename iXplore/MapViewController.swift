@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     
     var locationManager : CLLocationManager = CLLocationManager()
-    //var journalList : [Journal] = []
+    var manager = NSFileManager.defaultManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,31 +30,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         // Do any additional setup after loading the view.
         
         
-        
-        //JournalController.sharedInstance.getJournals()
-        
         navigationItem.title = "IXplore"
-        
-        
-        
         let add_button : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(addAction(_:)))
-        
-        
         navigationItem.rightBarButtonItem = add_button
         
-        print(JournalController.sharedInstance.journalList.count)
-        JournalController.sharedInstance.journalList = JournalController.sharedInstance.getJournals()
         
+        
+        /*
+        
+        let documents = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let fileUrl = documents.URLByAppendingPathComponent("journals.txt")
+        
+        if let jList = NSKeyedUnarchiver.unarchiveObjectWithFile(fileUrl.path!) as? [Journal] {
             
-        mapView.addAnnotations(JournalController.sharedInstance.journalList)
+            JournalController.sharedInstance.journalList = jList
+            
+        } */
+
         
+        print(JournalController.sharedInstance.journalList.count)
+        mapView.addAnnotations(JournalController.sharedInstance.getJournals())
+        print(JournalController.sharedInstance.journalList.count)
         locationManager.requestWhenInUseAuthorization()
         
 
-        
-        /*
-        for journal in journalList {
-            mapView.addAnnotation(journal) */
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -153,11 +152,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             
             
-            
-            // this line took 1 hour to google/write. Stay blue please!
+            /*
             if (annotation.isKindOfClass(MKUserLocation)) {
                 return nil
-            }
+            } */
             
             annotationView!.leftCalloutAccessoryView = leftLabel
             annotationView!.canShowCallout = true

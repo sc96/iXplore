@@ -24,13 +24,18 @@ class newEntryViewController: UIViewController {
     
     var locationManager : CLLocationManager = CLLocationManager()
     
+    var manager = NSFileManager.defaultManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
             
-            latitudeField.text = String(locationManager.location!.coordinate.latitude)
-            longitudeField.text = String(locationManager.location!.coordinate.longitude)
+            if (locationManager.location != nil) {
+                latitudeField.text = String(locationManager.location!.coordinate.latitude)
+                longitudeField.text = String(locationManager.location!.coordinate.longitude)
+            }
+            
             
             
         }
@@ -60,11 +65,19 @@ class newEntryViewController: UIViewController {
        
         
         let coordinate = CLLocationCoordinate2D(latitude: Double(latitudeField.text!)!, longitude: Double(longitudeField.text!)!)
-            let journal = Journal(title: titleField.text!, coordinate: coordinate, notes: notesField.text!, date: "6.6.16" )
+        let journal = Journal(title: titleField.text!, coordinate: coordinate, notes: notesField.text!, date: "6.6.16" )
         
-            JournalController.sharedInstance.journalList.append(journal)
+        
+        JournalController.sharedInstance.journalList.append(journal)
+        
+        let documents = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let fileUrl = documents.URLByAppendingPathComponent("journal.txt")
+        
+        
+        NSKeyedArchiver.archiveRootObject(JournalController.sharedInstance.journalList, toFile: fileUrl.path!)
+
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
             
         
     }
