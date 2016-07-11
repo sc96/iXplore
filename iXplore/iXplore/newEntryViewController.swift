@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class newEntryViewController: UIViewController {
     
@@ -21,8 +22,18 @@ class newEntryViewController: UIViewController {
     
     @IBOutlet weak var notesField: UITextField!
     
+    var locationManager : CLLocationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
+            
+            latitudeField.text = String(locationManager.location!.coordinate.latitude)
+            longitudeField.text = String(locationManager.location!.coordinate.longitude)
+            
+            
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -31,6 +42,8 @@ class newEntryViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     @IBAction func cancelButtonPressed(sender: UIButton) {

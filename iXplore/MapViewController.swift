@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,7 +16,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
-    var journalList : [Journal] = []
+    
+    var locationManager : CLLocationManager = CLLocationManager()
+    //var journalList : [Journal] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +42,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         
         navigationItem.rightBarButtonItem = add_button
         
-        print(journalList.count)
-        journalList = JournalController.sharedInstance.getJournals()
+        print(JournalController.sharedInstance.journalList.count)
+        JournalController.sharedInstance.journalList = JournalController.sharedInstance.getJournals()
         
-        for journal in journalList {
             
-            mapView.addAnnotation(journal)
-            
-        }
+        mapView.addAnnotations(JournalController.sharedInstance.journalList)
+        
+        locationManager.requestWhenInUseAuthorization()
+        
 
         
         /*
@@ -58,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         super.viewDidAppear(animated)
         
         
-        for journal in journalList {
+        for journal in JournalController.sharedInstance.journalList {
             
             mapView.addAnnotation(journal)
             
@@ -66,6 +69,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         
         
         tableView.reloadData()
+        
     }
     
         
@@ -127,15 +131,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     }
     
+    
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         let identifier = "MyPin"
         
         
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("identifier") as? MKPinAnnotationView
+        
+    
         
         if (annotationView == nil) {
-            
             
             
             let leftLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
@@ -143,26 +150,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
             
             
             
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            
+            
+            
+            // this line took 1 hour to google/write. Stay blue please!
+            if (annotation.isKindOfClass(MKUserLocation)) {
+                return nil
+            }
             
             annotationView!.leftCalloutAccessoryView = leftLabel
             annotationView!.canShowCallout = true
             
-            //    annotationView?.pinTintColor = UIColor.purpleColor()
-            
-       //     annotationView!.image = UIImage(named: "google.png")
-            
+         
             
             var frame = annotationView!.frame
             frame.size.height = 25
             frame.size.width = 25
             annotationView!.frame = frame
             
+            
+           
+            
         }
         
-        let label = annotationView!.leftCalloutAccessoryView as! UILabel
-        label.text = annotation.title!
-        
+    
         
         annotationView!.annotation = annotation
         return annotationView!
