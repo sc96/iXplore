@@ -26,6 +26,8 @@ class Journal : NSObject, MKAnnotation, NSCoding {
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.notes = notes
         self.date = date
+        self.latitude = latitude
+        self.longitude = longitude
     }
     
     init(title : String, coordinate: CLLocationCoordinate2D, notes : String, date: String) {
@@ -33,6 +35,8 @@ class Journal : NSObject, MKAnnotation, NSCoding {
         self.coordinate = coordinate
         self.notes = notes
         self.date = date
+        self.latitude = coordinate.latitude
+        self.longitude = coordinate.longitude
     }
     
     
@@ -41,9 +45,9 @@ class Journal : NSObject, MKAnnotation, NSCoding {
         title = (coder.decodeObjectForKey("title") as? String) ?? ""
         date = (coder.decodeObjectForKey("date") as? String) ?? ""
         notes = (coder.decodeObjectForKey("notes") as? String) ?? ""
-    /*    latitude = (coder.decodeObjectForKey("latitude") as? Double) ?? -34
-        longitude = (coder.decodeObjectForKey("longitude") as? Double) ?? 18.5 */
-        coordinate = (coder.decodeObjectForKey("coordinate") as? CLLocationCoordinate2D) ?? CLLocationCoordinate2D(latitude: -34, longitude: 18.5)
+        latitude = (coder.decodeObjectForKey("latitude") as? Double) ?? -34
+        longitude = (coder.decodeObjectForKey("longitude") as? Double) ?? 18.5
+        coordinate = (coder.decodeObjectForKey("coordinate") as? CLLocationCoordinate2D) ?? CLLocationCoordinate2D(latitude: -34.0, longitude: 18.45)
         
         
     }
@@ -53,8 +57,8 @@ class Journal : NSObject, MKAnnotation, NSCoding {
         coder.encodeObject(title, forKey: "title")
         coder.encodeObject(date, forKey: "date")
         coder.encodeObject(notes, forKey: "notes")
-      /*  coder.encodeObject(latitude, forKey: "latitude")
-        coder.encodeObject(longitude, forKey: "longitude") */
+        coder.encodeObject(latitude, forKey: "latitude")
+        coder.encodeObject(longitude, forKey: "longitude")
         coder.encodeObject(coordinate as? AnyObject, forKey: "coordinate")
 }
 

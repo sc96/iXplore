@@ -18,13 +18,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pf3-wf-shE">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                </mapView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rgm-Ox-PJb">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pf3-wf-shE">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -39,8 +39,8 @@
             </constraints>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="Pf3-wf-shE"/>
                     <exclude reference="rgm-Ox-PJb"/>
+                    <exclude reference="Pf3-wf-shE"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="HFq-gQ-7ak"/>
@@ -55,8 +55,8 @@
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
-                    <include reference="Pf3-wf-shE"/>
                     <include reference="rgm-Ox-PJb"/>
+                    <include reference="Pf3-wf-shE"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="HFq-gQ-7ak"/>

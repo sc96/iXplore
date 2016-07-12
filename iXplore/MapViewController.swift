@@ -4,7 +4,7 @@
 //
 //  Created by Sam on 7/10/16.
 //  Copyright © 2016 Sam. All rights reserved.
-//
+// TODO: Blue dot is missing. Test the Persistance
 
 import UIKit
 import MapKit
@@ -46,12 +46,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
             JournalController.sharedInstance.journalList = jList
             
         } */
-
+        locationManager.requestWhenInUseAuthorization()
+        
         
         print(JournalController.sharedInstance.journalList.count)
         mapView.addAnnotations(JournalController.sharedInstance.getJournals())
         print(JournalController.sharedInstance.journalList.count)
-        locationManager.requestWhenInUseAuthorization()
+
         
 
     }
@@ -134,10 +135,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
+        if (annotation.isKindOfClass(MKUserLocation)) {
+            return nil
+        }
+        
         let identifier = "MyPin"
         
         
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("identifier") as? MKPinAnnotationView
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MyPin") as? MKPinAnnotationView
         
     
         
@@ -152,10 +157,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             
             
-            /*
-            if (annotation.isKindOfClass(MKUserLocation)) {
-                return nil
-            } */
+            
             
             annotationView!.leftCalloutAccessoryView = leftLabel
             annotationView!.canShowCallout = true

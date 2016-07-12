@@ -46,12 +46,17 @@ class JournalController {
         journalList.append(journal5) */
         
         let documents = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileUrl = documents.URLByAppendingPathComponent("journal.txt")
+        let fileUrl = documents.URLByAppendingPathComponent("please.txt")
         
         if let jList = NSKeyedUnarchiver.unarchiveObjectWithFile(fileUrl.path!) as? [Journal] {
             
             journalList = jList
             
+        }
+        
+        for journal in journalList {
+            
+            journal.coordinate = CLLocationCoordinate2D(latitude: journal.latitude!, longitude: journal.longitude!)
         }
         
         return journalList

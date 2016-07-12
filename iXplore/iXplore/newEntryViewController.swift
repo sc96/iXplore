@@ -71,7 +71,7 @@ class newEntryViewController: UIViewController {
         JournalController.sharedInstance.journalList.append(journal)
         
         let documents = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileUrl = documents.URLByAppendingPathComponent("journal.txt")
+        let fileUrl = documents.URLByAppendingPathComponent("please.txt")
         
         
         NSKeyedArchiver.archiveRootObject(JournalController.sharedInstance.journalList, toFile: fileUrl.path!)
