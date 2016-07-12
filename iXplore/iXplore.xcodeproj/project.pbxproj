@@ -18,6 +18,8 @@
 		22458DF21D33203800116A02 /* newEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458DF01D33203800116A02 /* newEntryViewController.swift */; };
 		22458DF31D33203800116A02 /* newEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22458DF11D33203800116A02 /* newEntryViewController.xib */; };
 		22ADA30D1D33F3AE005068E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22ADA30C1D33F3AE005068E5 /* CoreLocation.framework */; };
+		22E827EB1D3509E100B0AA59 /* customTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E827E91D3509E100B0AA59 /* customTableViewCell.swift */; };
+		22E827EC1D3509E100B0AA59 /* customTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E827EA1D3509E100B0AA59 /* customTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		22458DF01D33203800116A02 /* newEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newEntryViewController.swift; sourceTree = "<group>"; };
 		22458DF11D33203800116A02 /* newEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newEntryViewController.xib; sourceTree = "<group>"; };
 		22ADA30C1D33F3AE005068E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		22E827E91D3509E100B0AA59 /* customTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTableViewCell.swift; sourceTree = "<group>"; };
+		22E827EA1D3509E100B0AA59 /* customTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			children = (
 				22458DE81D32E78400116A02 /* MapViewController.swift */,
 				22458DE91D32E78400116A02 /* MapViewController.xib */,
+				22E827E91D3509E100B0AA59 /* customTableViewCell.swift */,
+				22E827EA1D3509E100B0AA59 /* customTableViewCell.xib */,
 				22458DF01D33203800116A02 /* newEntryViewController.swift */,
 				22458DF11D33203800116A02 /* newEntryViewController.xib */,
 				22458DEE1D32F19B00116A02 /* JournalController.swift */,
@@ -143,6 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E827EC1D3509E100B0AA59 /* customTableViewCell.xib in Resources */,
 				222F48691D3010D900B30B26 /* LaunchScreen.storyboard in Resources */,
 				22458DEB1D32E78400116A02 /* MapViewController.xib in Resources */,
 				22458DF31D33203800116A02 /* newEntryViewController.xib in Resources */,
@@ -159,6 +166,7 @@
 			files = (
 				222F485F1D3010D900B30B26 /* AppDelegate.swift in Sources */,
 				223EF64B1D33D15B007A7185 /* Journal.swift in Sources */,
+				22E827EB1D3509E100B0AA59 /* customTableViewCell.swift in Sources */,
 				22458DEF1D32F19B00116A02 /* JournalController.swift in Sources */,
 				22458DF21D33203800116A02 /* newEntryViewController.swift in Sources */,
 				22458DEA1D32E78400116A02 /* MapViewController.swift in Sources */,

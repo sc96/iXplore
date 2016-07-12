@@ -22,6 +22,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        tableView.registerNib(UINib(nibName: "customTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        tableView.rowHeight = 80
+        
+        // this is to remove the empty space on the top of the table view. ns if it breaks anything lol
+        self.automaticallyAdjustsScrollViewInsets = false
+
 
         mapView.delegate = self
         tableView.delegate = self
@@ -49,7 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         locationManager.requestWhenInUseAuthorization()
         
         
-        print(JournalController.sharedInstance.journalList.count)
+        
         mapView.addAnnotations(JournalController.sharedInstance.getJournals())
         print(JournalController.sharedInstance.journalList.count)
 
@@ -98,19 +106,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     }
     
     
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+       /*
         var cell = tableView.dequeueReusableCellWithIdentifier("reusable")
         
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: "reusable")
+        } */
+        
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
+            as! customTableViewCell
+        
+        
+        
+        
+        
+        
+        
+        
+     /*   cell.titleLabel.text = "\(JournalController.sharedInstance.journalList[indexPath.row].title!)" */
+        cell.dateLabel.text = "date"
+        
+        if let image =  JournalController.sharedInstance.journalList[indexPath.row].picture {
+        cell.imageView!.image = image
         }
         
+        if let title = JournalController.sharedInstance.journalList[indexPath.row].title {
+            cell.titleLabel.text = title
+        }
         
-        
-        
-        cell!.textLabel?.text = "\(JournalController.sharedInstance.journalList[indexPath.row].title!)"
-        return cell!
+        if let date = JournalController.sharedInstance.journalList[indexPath.row].date {
+            cell.dateLabel.text = date
+        }
+        return cell
     }
     
     

@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="newEntryViewController" customModule="iXplore" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="Kyo-i1-Sap" id="rnV-SK-PgI"/>
                 <outlet property="latitudeField" destination="WfY-h1-JPd" id="KXZ-CL-bWL"/>
                 <outlet property="longitudeField" destination="szV-ha-iwy" id="1jR-3s-fbf"/>
                 <outlet property="notesField" destination="kBN-0n-sxD" id="Ci9-8M-oNO"/>
@@ -101,8 +102,8 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notes" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kBN-0n-sxD">
                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="NQ9-tY-SWz"/>
-                        <constraint firstAttribute="height" constant="200" id="PrM-B3-ZYA"/>
+                        <constraint firstAttribute="width" constant="150" id="NQ9-tY-SWz"/>
+                        <constraint firstAttribute="height" constant="150" id="PrM-B3-ZYA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -122,29 +123,6 @@
                         <action selector="notesFieldEnterPressed:" destination="-1" eventType="primaryActionTriggered" id="KTv-Hm-GZq"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCj-ma-SC0">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="61" id="VFr-tQ-Xai"/>
-                        <constraint firstAttribute="height" constant="30" id="wl8-3U-IaZ"/>
-                    </constraints>
-                    <state key="normal" title="Submit"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="VFr-tQ-Xai"/>
-                            <exclude reference="wl8-3U-IaZ"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="VFr-tQ-Xai"/>
-                            <include reference="wl8-3U-IaZ"/>
-                        </mask>
-                    </variation>
-                    <connections>
-                        <action selector="submitButtonPressed:" destination="-1" eventType="touchUpInside" id="itc-qz-HSF"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Journal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynn-Ku-V9b">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                     <constraints>
@@ -190,6 +168,48 @@
                         <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="QqX-bP-Rnd"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="addpicture" translatesAutoresizingMaskIntoConstraints="NO" id="Kyo-i1-Sap">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="ZEu-AT-Fci"/>
+                        <constraint firstAttribute="width" constant="240" id="pf2-Vp-e13"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ZEu-AT-Fci"/>
+                            <exclude reference="pf2-Vp-e13"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="ZEu-AT-Fci"/>
+                            <include reference="pf2-Vp-e13"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCj-ma-SC0">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="VFr-tQ-Xai"/>
+                        <constraint firstAttribute="height" constant="30" id="wl8-3U-IaZ"/>
+                    </constraints>
+                    <state key="normal" title="Submit"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="VFr-tQ-Xai"/>
+                            <exclude reference="wl8-3U-IaZ"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="VFr-tQ-Xai"/>
+                            <include reference="wl8-3U-IaZ"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="submitButtonPressed:" destination="-1" eventType="touchUpInside" id="itc-qz-HSF"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -197,6 +217,7 @@
                 <constraint firstItem="w3T-IQ-AZr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="CTp-1K-7U5"/>
                 <constraint firstItem="Ynn-Ku-V9b" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="HJU-6X-2Le"/>
                 <constraint firstAttribute="trailing" secondItem="szV-ha-iwy" secondAttribute="trailing" constant="50" id="JtP-cZ-Ifa"/>
+                <constraint firstItem="Kyo-i1-Sap" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Zdc-Qo-KTw"/>
                 <constraint firstItem="WfY-h1-JPd" firstAttribute="top" secondItem="kBN-0n-sxD" secondAttribute="bottom" constant="20" id="Zxz-IC-MhN"/>
                 <constraint firstItem="Ynn-Ku-V9b" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aKU-vn-wbP"/>
                 <constraint firstItem="WfY-h1-JPd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="bX8-Ix-v5a"/>
@@ -204,9 +225,10 @@
                 <constraint firstItem="F5E-VE-uyi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gwz-VI-7Uc"/>
                 <constraint firstItem="kBN-0n-sxD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nlu-ad-Jki"/>
                 <constraint firstItem="F5E-VE-uyi" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="3:10" id="oIV-DZ-glL"/>
-                <constraint firstItem="DCj-ma-SC0" firstAttribute="top" secondItem="kBN-0n-sxD" secondAttribute="bottom" constant="60" id="raV-cd-Ya6"/>
                 <constraint firstItem="kBN-0n-sxD" firstAttribute="top" secondItem="F5E-VE-uyi" secondAttribute="bottom" constant="20" id="xL2-M5-HX7"/>
+                <constraint firstItem="DCj-ma-SC0" firstAttribute="top" secondItem="Kyo-i1-Sap" secondAttribute="bottom" constant="60" id="y2T-kA-sUc"/>
                 <constraint firstItem="szV-ha-iwy" firstAttribute="top" secondItem="kBN-0n-sxD" secondAttribute="bottom" constant="20" id="yfL-uN-Lpx"/>
+                <constraint firstItem="Kyo-i1-Sap" firstAttribute="top" secondItem="szV-ha-iwy" secondAttribute="bottom" constant="20" id="zF9-OA-NQF"/>
                 <constraint firstItem="Ynn-Ku-V9b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="zgB-DC-mCU"/>
             </constraints>
             <variation key="default">
@@ -215,9 +237,10 @@
                     <exclude reference="WfY-h1-JPd"/>
                     <exclude reference="szV-ha-iwy"/>
                     <exclude reference="kBN-0n-sxD"/>
-                    <exclude reference="DCj-ma-SC0"/>
                     <exclude reference="Ynn-Ku-V9b"/>
                     <exclude reference="w3T-IQ-AZr"/>
+                    <exclude reference="Kyo-i1-Sap"/>
+                    <exclude reference="DCj-ma-SC0"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="gwz-VI-7Uc"/>
@@ -229,12 +252,14 @@
                     <exclude reference="JtP-cZ-Ifa"/>
                     <exclude reference="yfL-uN-Lpx"/>
                     <exclude reference="0eW-RU-UHE"/>
-                    <exclude reference="raV-cd-Ya6"/>
+                    <exclude reference="y2T-kA-sUc"/>
                     <exclude reference="CTp-1K-7U5"/>
                     <exclude reference="eY0-XF-kh7"/>
                     <exclude reference="HJU-6X-2Le"/>
                     <exclude reference="aKU-vn-wbP"/>
                     <exclude reference="zgB-DC-mCU"/>
+                    <exclude reference="Zdc-Qo-KTw"/>
+                    <exclude reference="zF9-OA-NQF"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -243,9 +268,10 @@
                     <include reference="WfY-h1-JPd"/>
                     <include reference="szV-ha-iwy"/>
                     <include reference="kBN-0n-sxD"/>
-                    <include reference="DCj-ma-SC0"/>
                     <include reference="Ynn-Ku-V9b"/>
                     <include reference="w3T-IQ-AZr"/>
+                    <include reference="Kyo-i1-Sap"/>
+                    <include reference="DCj-ma-SC0"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="gwz-VI-7Uc"/>
@@ -257,14 +283,19 @@
                     <include reference="JtP-cZ-Ifa"/>
                     <include reference="yfL-uN-Lpx"/>
                     <include reference="0eW-RU-UHE"/>
-                    <include reference="raV-cd-Ya6"/>
+                    <include reference="y2T-kA-sUc"/>
                     <include reference="CTp-1K-7U5"/>
                     <include reference="eY0-XF-kh7"/>
                     <exclude reference="HJU-6X-2Le"/>
                     <include reference="aKU-vn-wbP"/>
                     <include reference="zgB-DC-mCU"/>
+                    <include reference="Zdc-Qo-KTw"/>
+                    <include reference="zF9-OA-NQF"/>
                 </mask>
             </variation>
         </view>
     </objects>
+    <resources>
+        <image name="addpicture" width="240" height="128"/>
+    </resources>
 </document>

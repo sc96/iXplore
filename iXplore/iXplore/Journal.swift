@@ -20,6 +20,7 @@ class Journal : NSObject, MKAnnotation, NSCoding {
     var date : String?
     var longitude : Double?
     var latitude:  Double?
+    var picture: UIImage?
     
     init(title : String, latitude: Double, longitude : Double, notes : String, date: String) {
         self.title = title
@@ -48,6 +49,7 @@ class Journal : NSObject, MKAnnotation, NSCoding {
         latitude = (coder.decodeObjectForKey("latitude") as? Double) ?? -34
         longitude = (coder.decodeObjectForKey("longitude") as? Double) ?? 18.5
         coordinate = (coder.decodeObjectForKey("coordinate") as? CLLocationCoordinate2D) ?? CLLocationCoordinate2D(latitude: -34.0, longitude: 18.45)
+        picture = (coder.decodeObjectForKey("picture") as? UIImage ?? UIImage())
         
         
     }
@@ -60,6 +62,7 @@ class Journal : NSObject, MKAnnotation, NSCoding {
         coder.encodeObject(latitude, forKey: "latitude")
         coder.encodeObject(longitude, forKey: "longitude")
         coder.encodeObject(coordinate as? AnyObject, forKey: "coordinate")
+        coder.encodeObject(picture as? AnyObject, forKey: "picture")
 }
 
 }

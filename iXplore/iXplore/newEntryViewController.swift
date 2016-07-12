@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class newEntryViewController: UIViewController {
+class newEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     
@@ -22,9 +22,15 @@ class newEntryViewController: UIViewController {
     
     @IBOutlet weak var notesField: UITextField!
     
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
     var locationManager : CLLocationManager = CLLocationManager()
     
     var manager = NSFileManager.defaultManager()
+    
+    var imagePicker: UIImagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +45,14 @@ class newEntryViewController: UIViewController {
             
             
         }
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .PhotoLibrary
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: Selector("imagePressed"))
+        imageView.addGestureRecognizer(tap)
+        imageView.userInteractionEnabled = true
 
         // Do any additional setup after loading the view.
     }
@@ -46,6 +60,31 @@ class newEntryViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePressed() -> Void {
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        
+        if let pickedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            
+            imageView.contentMode = .ScaleAspectFit
+            imageView.image = pickedImage
+            
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     
@@ -62,10 +101,22 @@ class newEntryViewController: UIViewController {
     
     @IBAction func submitButtonPressed(sender: UIButton) {
         
-       
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        let convertedDate = dateFormatter.stringFromDate(NSDate())
+        
         
         let coordinate = CLLocationCoordinate2D(latitude: Double(latitudeField.text!)!, longitude: Double(longitudeField.text!)!)
-        let journal = Journal(title: titleField.text!, coordinate: coordinate, notes: notesField.text!, date: "6.6.16" )
+        let journal = Journal(title: titleField.text!, coordinate: coordinate, notes: notesField.text!, date: "6.6.16")
+        
+        if (imageView.image != nil) {
+            
+            journal.picture = imageView.image
+        }
+        
+        journal.date = convertedDate
+        
+        
         
         
         JournalController.sharedInstance.journalList.append(journal)
@@ -73,6 +124,7 @@ class newEntryViewController: UIViewController {
         let documents = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
         let fileUrl = documents.URLByAppendingPathComponent("please.txt")
         
+ 
         
         NSKeyedArchiver.archiveRootObject(JournalController.sharedInstance.journalList, toFile: fileUrl.path!)
 
