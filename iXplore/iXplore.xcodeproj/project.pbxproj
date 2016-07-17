@@ -18,8 +18,14 @@
 		22458DF21D33203800116A02 /* newEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458DF01D33203800116A02 /* newEntryViewController.swift */; };
 		22458DF31D33203800116A02 /* newEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22458DF11D33203800116A02 /* newEntryViewController.xib */; };
 		22ADA30D1D33F3AE005068E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22ADA30C1D33F3AE005068E5 /* CoreLocation.framework */; };
+		22CA17E91D3C46AD00365A9C /* clExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA17E81D3C46AD00365A9C /* clExtension.swift */; };
+		22E156FB1D36DCB200563DE2 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E156F91D36DCB200563DE2 /* MoreViewController.swift */; };
+		22E156FC1D36DCB200563DE2 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E156FA1D36DCB200563DE2 /* MoreViewController.xib */; };
+		22E601FB1D36930B004F6967 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E601F91D36930B004F6967 /* LoginViewController.swift */; };
+		22E601FC1D36930B004F6967 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E601FA1D36930B004F6967 /* LoginViewController.xib */; };
 		22E827EB1D3509E100B0AA59 /* customTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E827E91D3509E100B0AA59 /* customTableViewCell.swift */; };
 		22E827EC1D3509E100B0AA59 /* customTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E827EA1D3509E100B0AA59 /* customTableViewCell.xib */; };
+		3AF1E1745ADCF1AED1EA7FF6 /* Pods_iXplore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE2E6FA91B81D9812769BD4 /* Pods_iXplore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +42,16 @@
 		22458DF01D33203800116A02 /* newEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newEntryViewController.swift; sourceTree = "<group>"; };
 		22458DF11D33203800116A02 /* newEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newEntryViewController.xib; sourceTree = "<group>"; };
 		22ADA30C1D33F3AE005068E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		22CA17E81D3C46AD00365A9C /* clExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = clExtension.swift; sourceTree = "<group>"; };
+		22E156F91D36DCB200563DE2 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		22E156FA1D36DCB200563DE2 /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		22E601F91D36930B004F6967 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		22E601FA1D36930B004F6967 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		22E827E91D3509E100B0AA59 /* customTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTableViewCell.swift; sourceTree = "<group>"; };
 		22E827EA1D3509E100B0AA59 /* customTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customTableViewCell.xib; sourceTree = "<group>"; };
+		77F26CB9C8FC71C355593A38 /* Pods-iXplore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iXplore.release.xcconfig"; path = "Pods/Target Support Files/Pods-iXplore/Pods-iXplore.release.xcconfig"; sourceTree = "<group>"; };
+		ADE2E6FA91B81D9812769BD4 /* Pods_iXplore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iXplore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC5CC346D5C93C6590E83E8 /* Pods-iXplore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iXplore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iXplore/Pods-iXplore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +61,7 @@
 			files = (
 				22ADA30D1D33F3AE005068E5 /* CoreLocation.framework in Frameworks */,
 				22458DED1D32EA8300116A02 /* MapKit.framework in Frameworks */,
+				3AF1E1745ADCF1AED1EA7FF6 /* Pods_iXplore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +75,8 @@
 				22458DEC1D32EA8300116A02 /* MapKit.framework */,
 				222F485D1D3010D900B30B26 /* iXplore */,
 				222F485C1D3010D900B30B26 /* Products */,
+				9CAF72458B65B6C5C4FD227F /* Pods */,
+				3EC5503A3CE82B7BD26CE6CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,12 +91,17 @@
 		222F485D1D3010D900B30B26 /* iXplore */ = {
 			isa = PBXGroup;
 			children = (
+				22E156F91D36DCB200563DE2 /* MoreViewController.swift */,
+				22E156FA1D36DCB200563DE2 /* MoreViewController.xib */,
 				22458DE81D32E78400116A02 /* MapViewController.swift */,
 				22458DE91D32E78400116A02 /* MapViewController.xib */,
 				22E827E91D3509E100B0AA59 /* customTableViewCell.swift */,
 				22E827EA1D3509E100B0AA59 /* customTableViewCell.xib */,
+				22CA17E81D3C46AD00365A9C /* clExtension.swift */,
 				22458DF01D33203800116A02 /* newEntryViewController.swift */,
 				22458DF11D33203800116A02 /* newEntryViewController.xib */,
+				22E601F91D36930B004F6967 /* LoginViewController.swift */,
+				22E601FA1D36930B004F6967 /* LoginViewController.xib */,
 				22458DEE1D32F19B00116A02 /* JournalController.swift */,
 				223EF64A1D33D15B007A7185 /* Journal.swift */,
 				222F485E1D3010D900B30B26 /* AppDelegate.swift */,
@@ -90,6 +112,23 @@
 			path = iXplore;
 			sourceTree = "<group>";
 		};
+		3EC5503A3CE82B7BD26CE6CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADE2E6FA91B81D9812769BD4 /* Pods_iXplore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9CAF72458B65B6C5C4FD227F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5CC346D5C93C6590E83E8 /* Pods-iXplore.debug.xcconfig */,
+				77F26CB9C8FC71C355593A38 /* Pods-iXplore.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -97,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 222F486D1D3010D900B30B26 /* Build configuration list for PBXNativeTarget "iXplore" */;
 			buildPhases = (
+				7DB0F32A6E9F29FB58777C3C /* [CP] Check Pods Manifest.lock */,
 				222F48571D3010D900B30B26 /* Sources */,
 				222F48581D3010D900B30B26 /* Frameworks */,
 				222F48591D3010D900B30B26 /* Resources */,
+				C8B75C684B592BBD0C494722 /* [CP] Embed Pods Frameworks */,
+				62F9115FE79DAF2F9D9E4FB0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,7 +193,9 @@
 			files = (
 				22E827EC1D3509E100B0AA59 /* customTableViewCell.xib in Resources */,
 				222F48691D3010D900B30B26 /* LaunchScreen.storyboard in Resources */,
+				22E601FC1D36930B004F6967 /* LoginViewController.xib in Resources */,
 				22458DEB1D32E78400116A02 /* MapViewController.xib in Resources */,
+				22E156FC1D36DCB200563DE2 /* MoreViewController.xib in Resources */,
 				22458DF31D33203800116A02 /* newEntryViewController.xib in Resources */,
 				222F48661D3010D900B30B26 /* Assets.xcassets in Resources */,
 			);
@@ -159,16 +203,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		62F9115FE79DAF2F9D9E4FB0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iXplore/Pods-iXplore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DB0F32A6E9F29FB58777C3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C8B75C684B592BBD0C494722 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iXplore/Pods-iXplore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		222F48571D3010D900B30B26 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E601FB1D36930B004F6967 /* LoginViewController.swift in Sources */,
 				222F485F1D3010D900B30B26 /* AppDelegate.swift in Sources */,
 				223EF64B1D33D15B007A7185 /* Journal.swift in Sources */,
 				22E827EB1D3509E100B0AA59 /* customTableViewCell.swift in Sources */,
 				22458DEF1D32F19B00116A02 /* JournalController.swift in Sources */,
+				22E156FB1D36DCB200563DE2 /* MoreViewController.swift in Sources */,
 				22458DF21D33203800116A02 /* newEntryViewController.swift in Sources */,
+				22CA17E91D3C46AD00365A9C /* clExtension.swift in Sources */,
 				22458DEA1D32E78400116A02 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +367,7 @@
 		};
 		222F486E1D3010D900B30B26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDC5CC346D5C93C6590E83E8 /* Pods-iXplore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -286,6 +382,7 @@
 		};
 		222F486F1D3010D900B30B26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77F26CB9C8FC71C355593A38 /* Pods-iXplore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

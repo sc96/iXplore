@@ -50,7 +50,7 @@ class newEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.sourceType = .PhotoLibrary
         
         
-        let tap = UITapGestureRecognizer(target: self, action: Selector("imagePressed"))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(newEntryViewController.imagePressed))
         imageView.addGestureRecognizer(tap)
         imageView.userInteractionEnabled = true
 

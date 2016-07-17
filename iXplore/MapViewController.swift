@@ -65,8 +65,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
 
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
+        
         
         
         for journal in JournalController.sharedInstance.journalList {
@@ -80,19 +84,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         
     }
     
-        
-
-
-    func addAction(sender:UIBarButtonItem){
-        
-        let NewEntryViewController = newEntryViewController(nibName: "newEntryViewController", bundle: nil)
-        
-        self.presentViewController(NewEntryViewController, animated : true, completion: nil)
-        
-        
     
-    }
-   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -118,7 +110,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         } */
         
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
             as! customTableViewCell
         
         
@@ -161,6 +153,74 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     
     
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .Normal , title: "Delete") { action, index in
+    
+            
+            let journal = JournalController.sharedInstance.journalList.removeAtIndex(indexPath.row)
+            
+            
+            let documents = self.manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let fileUrl = documents.URLByAppendingPathComponent("please.txt")
+            
+            NSKeyedArchiver.archiveRootObject(JournalController.sharedInstance.journalList, toFile: fileUrl.path!)
+            
+            
+            tableView.reloadData()
+            
+            
+            //
+            for annotation in self.mapView.annotations {
+                if annotation.title! == journal.title {
+                    if  CLLocation.compareCords(annotation.coordinate, c2: journal.coordinate) {
+                        self.mapView.removeAnnotation(annotation)
+                    }
+                    
+                }
+            }
+        
+        
+            
+            
+        }
+        delete.backgroundColor = UIColor.redColor()
+        
+        let edit = UITableViewRowAction(style: .Normal, title: "edit") { action, index in
+            print("edit button tapped")
+        }
+        edit.backgroundColor = UIColor.orangeColor()
+        
+        let view = UITableViewRowAction(style: .Normal, title: "view") { action, index in
+            
+            let moreViewController = MoreViewController(nibName: "MoreViewController", bundle: nil)
+            moreViewController.titleDummy = JournalController.sharedInstance.journalList[index.row].title
+            moreViewController.dateDummy = JournalController.sharedInstance.journalList[index.row].date
+            moreViewController.notesDummy = JournalController.sharedInstance.journalList[index.row].notes
+            moreViewController.imageDummy = JournalController.sharedInstance.journalList[index.row].picture
+            
+                                                        
+            self.presentViewController(moreViewController, animated : true, completion: nil) 
+            
+        }
+        view.backgroundColor = UIColor.lightGrayColor()
+        
+        return [delete, edit, view]
+    }
+    
+    
+    
+
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // the cells you would like the actions to appear needs to be editable
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // you need to implement this method too or you can't swipe to display the actions
     }
     
     
@@ -212,6 +272,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         return annotationView!
         
     }
+    
+    
+    
+    
+    /* SELECTOR FUNCTIONS */
+    
+    func addAction(sender:UIBarButtonItem){
+        
+        let NewEntryViewController = newEntryViewController(nibName: "newEntryViewController", bundle: nil)
+        
+        self.presentViewController(NewEntryViewController, animated : true, completion: nil)
+        
+    }
+    
+
+    
+    
+    
     
  
     

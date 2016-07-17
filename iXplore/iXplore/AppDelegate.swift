@@ -8,9 +8,11 @@
 
 import UIKit
 import MapKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FBSDKLoginButtonDelegate  {
 
     var window: UIWindow?
 
@@ -22,14 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let mapViewController =  MapViewController(nibName: "MapViewController", bundle: nil)
+    /*    let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil) */
         
         
         let navigationController = UINavigationController(rootViewController: mapViewController)
+        
+        
+        
 
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
+        
+        /*
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions) */
         
         return true
     }
@@ -50,12 +59,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    
+    /*!
+     @abstract Sent to the delegate when the button was used to login.
+     @param loginButton the sender
+     @param result The results of the login
+     @param error The error (if any) from the login
+     */
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+                
+        
+    }
+    
+    /*!
+     @abstract Sent to the delegate when the button was used to logout.
+     @param loginButton The button that was clicked.
+     */
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        
+        
+    }
 
 }
 
